@@ -1,11 +1,15 @@
 <template>
-    <v-flex>
-      <v-card class="card-default">
-        <v-card-title>{{ titulo }}</v-card-title>
-        <v-img class="imagem-quadrinho" :src="imagem"></v-img>
-        <v-card-actions>{{ descricao }}</v-card-actions>
-      </v-card>
-    </v-flex>
+  <v-hover>
+    <v-card class="card-default" height="300px">
+      <v-img class="imagem-quadrinho" :src="imagem"></v-img>
+      <v-card-title primary-title>
+        <div>
+          <h3 class="headline mb-0 text-xs-center">{{ titulo }}</h3>
+          <div>{{ descricao }}</div>
+        </div>
+      </v-card-title>
+    </v-card>
+  </v-hover>
 </template>
 
 <script>

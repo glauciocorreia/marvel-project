@@ -1,14 +1,15 @@
 <template>
-  <div id="app" class="md-layout">
+  <div id="app">
+    <Ads></Ads>
     <v-container grid-list-xl>
       <v-layout row wrap>
-        <div v-for="quadrinho in quadrinhos" :key="quadrinho.id" xs12 sm12 md6 lg4 xl2>
+        <v-flex v-for="quadrinho in quadrinhos" :key="quadrinho.id" xs12 sm12 md6 lg4 xl4>
           <quadrinho
             :titulo="quadrinho.title"
             :descricao="quadrinho.description"
             :imagem="getImagem(quadrinho)"
           ></quadrinho>
-        </div>
+        </v-flex>
       </v-layout>
     </v-container>
   </div>
@@ -17,10 +18,12 @@
 
 <script>
 import MarvelApi from "@/services/MarvelAPI";
+import Ads from "@/components/Ads";
 import Quadrinho from "@/components/Quadrinho";
 export default {
   name: "App",
   components: {
+    Ads,
     Quadrinho
   },
   data() {
@@ -29,9 +32,8 @@ export default {
     };
   },
   created() {
-    var self = this;
     MarvelApi.getAllComics(10, comics => {
-      self.quadrinhos = comics.data.data.results;
+      this.quadrinhos = comics.data.data.results;
     });
   },
   methods: {
