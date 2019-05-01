@@ -1,49 +1,45 @@
 <template>
-  <v-app>
-    <v-toolbar app>
-      <v-toolbar-title class="headline text-uppercase">
-        <span>Vuetify</span>
-        <span class="font-weight-light">MATERIAL DESIGN</span>
-      </v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-btn
-        flat
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-      >
-        <span class="mr-2">Latest Release</span>
-      </v-btn>
-    </v-toolbar>
-
-    <v-content>
-      <Comic/>
-    </v-content>
-  </v-app>
+  <div id="app" class="md-layout">
+    <v-container grid-list-xl>
+      <v-layout row wrap>
+        <div v-for="quadrinho in quadrinhos" :key="quadrinho.id" xs12 sm12 md6 lg4 xl2>
+          <quadrinho
+            :titulo="quadrinho.title"
+            :descricao="quadrinho.description"
+            :imagem="getImagem(quadrinho)"
+          ></quadrinho>
+        </div>
+      </v-layout>
+    </v-container>
+  </div>
 </template>
 
-<script>
-import MarvelApi from './services/MarvelAPI'
-import Comic from './components/Comic'
 
+<script>
+import MarvelApi from "@/services/MarvelAPI";
+import Quadrinho from "@/components/Quadrinho";
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    Comic
+    Quadrinho
   },
-  data () {
+  data() {
     return {
-      comics: []
-    }
+      quadrinhos: []
+    };
   },
   created() {
-    MarvelApi.getAllComics(10, comics => this.comics = comics.data.results);
+    var self = this;
+    MarvelApi.getAllComics(10, comics => {
+      self.quadrinhos = comics.data.data.results;
+    });
   },
   methods: {
-    getImage(comics) {
-      if (comics.images.length) {
-        return comics.images[0].path + '/portrait_medium.jpg';
+    getImagem: function(quadrinho) {
+      if (quadrinho.images.length) {
+        return quadrinho.images[0].path + "/portrait_medium.jpg";
       }
     }
   }
-}
+};
 </script>
