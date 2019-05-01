@@ -2,7 +2,7 @@
   <v-card>
     <v-card-title>
       <h2>{{ title }}</h2>
-      <v-img :src="imagem"></v-img>
+      <v-img :src="image"></v-img>
       <p>{{ description }}</p>
     </v-card-title>
     <v-card-actions>
@@ -15,7 +15,7 @@
 export default {
   name: 'comic',
   props: {
-    imagem: {
+    image: {
       type: String
     },
     title: {

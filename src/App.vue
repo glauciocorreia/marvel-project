@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import MarvelApi from './services/MarvelAPI'
 import Comic from './components/Comic'
 
 export default {
@@ -31,7 +32,17 @@ export default {
   },
   data () {
     return {
-      //
+      comics: []
+    }
+  },
+  created() {
+    MarvelApi.getAllComics(10, comics => this.comics = comics.data.results);
+  },
+  methods: {
+    getImage(comics) {
+      if (comics.images.length) {
+        return comics.images[0].path + '/portrait_medium.jpg';
+      }
     }
   }
 }
