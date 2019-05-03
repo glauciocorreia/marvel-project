@@ -3,7 +3,7 @@
     <Ads></Ads>
     <v-container grid-list-xl>
       <v-layout row wrap>
-        <v-flex v-for="quadrinho in quadrinhos" :key="quadrinho.id" xs12 sm12 md6 lg4 xl4>
+        <v-flex v-for="quadrinho in quadrinhos" :key="quadrinho.id" xs12 sm12 md6 lg6 xl4>
           <quadrinho
             :titulo="quadrinho.title"
             :descricao="quadrinho.description"

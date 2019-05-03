@@ -1,15 +1,19 @@
 <template>
-  <v-hover>
-    <v-card class="card-default" height="300px">
-      <v-img class="imagem-quadrinho" :src="imagem"></v-img>
-      <v-card-title primary-title>
-        <div>
-          <h3 class="headline mb-0 text-xs-center">{{ titulo }}</h3>
-          <div>{{ descricao }}</div>
-        </div>
-      </v-card-title>
-    </v-card>
-  </v-hover>
+  <v-card class="card-default">
+    <v-container d-flex justify-center row fill-height>
+      <div xs7>
+        <v-img class="imagem-quadrinho" :src="imagem"></v-img>
+      </div>
+      <div xs5>
+        <v-card-title primary-title>
+          <div>
+            <h3 class="headline mb-0 text-xs-center">{{ titulo }}</h3>
+            <div>{{ descricao }}</div>
+          </div>
+        </v-card-title>
+      </div>
+    </v-container>
+  </v-card>
 </template>
 
 <script>
