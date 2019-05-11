@@ -1,14 +1,14 @@
 <template>
   <v-card class="card-default">
     <v-container d-flex justify-center row fill-height>
-      <div xs7>
+      <div xs12>
         <v-img class="imagem-quadrinho" :src="imagem"></v-img>
       </div>
-      <div xs5>
+      <div xs12>
         <v-card-title primary-title>
           <div>
             <h3 class="headline mb-0 text-xs-center">{{ titulo }}</h3>
-            <div>{{ descricao }}</div>
+            
           </div>
         </v-card-title>
       </div>
